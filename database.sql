@@ -40,3 +40,5 @@ $$;
 -- Gán quyền truy cập
 GRANT ALL PRIVILEGES ON DATABASE bigdata TO app_user;
 GRANT ALL PRIVILEGES ON TABLE citizens TO app_user;
+
+-- psql -U app_user -h localhost -d bigdata -f database.sql
