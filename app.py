@@ -2,8 +2,7 @@ import os
 import psycopg2
 from flask import Flask, jsonify, request, render_template
 
-# CITIZEN_APP_TOKEN = os.getenv('CITIZEN_APP_TOKEN')
-CITIZEN_APP_TOKEN = "123"
+citizen_app_token = os.getenv('CITIZEN_APP_TOKEN')
 
 app = Flask(__name__)
 
@@ -72,7 +71,7 @@ def delete_citizen():
     if not password:
         return jsonify({"error": "Password is required"}), 400
     
-    if password != CITIZEN_APP_TOKEN:
+    if password != citizen_app_token:
         return jsonify({"error": "Password is incorrect"}), 400
     
     try:
