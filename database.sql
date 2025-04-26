@@ -1,17 +1,3 @@
--- Tạo user nếu chưa tồn tại
-DO $$
-BEGIN
-    IF NOT EXISTS (
-        SELECT FROM pg_roles WHERE rolname = 'app_user'
-    ) THEN
-        CREATE USER app_user WITH PASSWORD 'password';
-    END IF;
-END
-$$;
-
--- Đặt lại mật khẩu để đảm bảo
-ALTER USER app_user WITH PASSWORD 'password';
-
 -- Tạo database nếu chưa tồn tại
 SELECT 'CREATE DATABASE bigdata'
 WHERE NOT EXISTS (
@@ -36,7 +22,3 @@ BEGIN
     END IF;
 END
 $$;
-
--- Gán quyền truy cập
-GRANT ALL PRIVILEGES ON DATABASE bigdata TO app_user;
-GRANT ALL PRIVILEGES ON TABLE citizens TO app_user;

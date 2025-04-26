@@ -1,6 +1,7 @@
 import os
 import psycopg2
 from flask import Flask, jsonify, request, render_template
+from urllib.parse import urlparse
 
 citizen_app_token = os.getenv('CITIZEN_APP_TOKEN')
 
@@ -10,12 +11,14 @@ app = Flask(__name__)
 citizens = []
 
 def get_db_connection():
+    database_url = os.getenv('DATABASE_URL')
+    parsed_url = urlparse(database_url)
     connection = psycopg2.connect(
-        host='localhost',
-        database='bigdata',
-        user='app_user',
-        password='password',
-        port=5432
+        host=parsed_url.hostname,
+        port=parsed_url.port,
+        database=parsed_url.path[1:],
+        user=parsed_url.username,
+        password=parsed_url.password
     )
     return connection
 
