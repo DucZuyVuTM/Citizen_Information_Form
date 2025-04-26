@@ -55,7 +55,7 @@ def get_history():
         connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT name, date_of_birth, citizen_code FROM citizens")
-        citizens = [{"name": row[0], "date_of_birth": row[1], "citizen_code": row[2]} for row in cursor.fetchall()]
+        citizens = [{"name": row[0], "date_of_birth": row[1].strftime('%d-%m-%Y'), "citizen_code": row[2]} for row in cursor.fetchall()]
         cursor.close()
         connection.close()
         return jsonify(citizens)
