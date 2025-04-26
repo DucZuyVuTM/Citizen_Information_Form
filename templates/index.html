@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Information</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="../static/script.js" defer></script>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">Citizen Information Form</h1>
+        <div class="forms-wrapper">
+            <div class="form-div">            
+                <form id="add-form">
+                    <h3 class="form-subtitle">Add Citizen</h3>
+                    <div class="input-div">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="input-div">                
+                        <label for="date_of_birth">Date of Birth:</label>
+                        <input type="date" id="date_of_birth" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="add_citizen_code">Citizen Code:</label>
+                        <input type="text" id="add_citizen_code" required>
+                    </div>
+                    <button type="submit" id="submit-button">Submit</button>
+                </form>
+            </div>
+            <div class="form-div">
+                <form id="delete-form">
+                    <h3 class="form-subtitle">Delete Citizen</h3>
+                    <div class="input-div">
+                        <label for="del_citizen_code">Citizen Code:</label>
+                        <input type="text" id="del_citizen_code" name="del_citizen_code" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Delete Citizen</button>
+                </form>
+            </div>
+        </div>
+        <div class="summary-div">
+            <h2 class="summary-subtitle">Submitted Citizens</h2>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+</body>
+</html>
